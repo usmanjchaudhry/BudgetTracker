@@ -15,11 +15,10 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost/budget", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://user:123@cluster0.pnfjj.mongodb.net/BudgetTracker?retryWrites=true&w=majority", {
   useNewUrlParser: true,
   useFindAndModify: false
 });
-
 // routes
 app.use(require("./routes/api.js"));
 
